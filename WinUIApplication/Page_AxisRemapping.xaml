@@ -1,0 +1,54 @@
+﻿<Page
+    x:Class="WinUIApplication.Page_AxisRemapping"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:WinUIApplication"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <StackPanel Margin="12" Spacing="12">
+        <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Axis remapping" />
+        <TextBlock FontWeight="Bold" Text="Instruction :" />
+        <TextBlock
+            x:Name="InstructionTextBlock"
+            Text="-"
+            TextWrapping="WrapWholeWords" />
+        <TextBlock FontWeight="Bold" Text="Message:" />
+        <TextBlock
+            x:Name="MessageTextBlock"
+            Text="-"
+            TextWrapping="WrapWholeWords" />
+        <TextBlock FontWeight="Bold" Text="Received data :" />
+        <TextBlock
+            x:Name="DataTextBlock"
+            Text="-"
+            TextWrapping="WrapWholeWords" />
+        <StackPanel
+            Margin="0,12,0,0"
+            Orientation="Horizontal"
+            Spacing="6">
+            <Button Click="OnOpenWinDisplaySettings">
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                    <FontIcon FontSize="20" Glyph="&#xE72D;" />
+                    <TextBlock Margin="6,0,0,0" Text="Open Display settings" />
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        <StackPanel
+            Margin="0,12,0,0"
+            HorizontalAlignment="Left"
+            Orientation="Horizontal"
+            Spacing="12">
+            <Button
+                x:Name="OkButton"
+                MinWidth="120"
+                Click="OkButton_Click"
+                Content="OK" />
+            <Button
+                x:Name="CancelButton"
+                MinWidth="120"
+                Click="CancelButton_Click"
+                Content="Cancel" />
+        </StackPanel>
+    </StackPanel>
+</Page>

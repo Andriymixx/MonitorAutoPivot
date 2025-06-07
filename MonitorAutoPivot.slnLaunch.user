@@ -1,0 +1,20 @@
+[
+  {
+    "Name": "console",
+    "Projects": [
+      {
+        "Path": "ConsoleApplication1\\ConsoleApplication1.vcxproj",
+        "Action": "Start",
+        "DebugTarget": "Local Windows Debugger"
+      },
+      {
+        "Path": "ForTemplateDesigner\\ForTemplateDesigner.csproj",
+        "Action": "Start"
+      }
+    ]
+  },
+  {
+    "Name": "New Profile",
+    "Projects": []
+  }
+]

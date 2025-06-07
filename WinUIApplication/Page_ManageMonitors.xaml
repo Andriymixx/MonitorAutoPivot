@@ -1,0 +1,187 @@
+﻿<Page
+    x:Class="WinUIApplication.Page_ManageMonitors"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Microsoft.UI.Xaml.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:WinUIApplication"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <!--  Template for displaying presets in list  -->
+        <DataTemplate x:Key="PresetTemplate" x:DataType="local:Viewm_Preset">
+            <TextBlock Text="{x:Bind DisplayName}" />
+        </DataTemplate>
+        <!--  Tempplate for displaying monitors in list  -->
+        <DataTemplate x:Key="MonitorTemplate" x:DataType="local:Viewm_MonitorInfo">
+            <Grid Padding="0,6,0,6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal"
+                    Spacing="12">
+                    <TextBlock FontSize="30" Text="{x:Bind Index}" />
+                    <FontIcon FontSize="30" Glyph="&#xE7F4;" />
+                </StackPanel>
+                <StackPanel
+                    Grid.Column="1"
+                    Margin="12,0,0,0"
+                    VerticalAlignment="Center"
+                    Spacing="6">
+                    <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="{x:Bind DeviceName}" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Orientation="Horizontal" Spacing="6">
+                            <TextBlock
+                                Foreground="Gray"
+                                Style="{StaticResource CaptionTextBlockStyle}"
+                                Text="{x:Bind DisplayNum}" />
+                            <TextBlock
+                                Foreground="Gray"
+                                Style="{StaticResource CaptionTextBlockStyle}"
+                                Text="| GPU:" />
+                            <TextBlock
+                                Foreground="Gray"
+                                Style="{StaticResource CaptionTextBlockStyle}"
+                                Text="{x:Bind GpuName}" />
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <!--  Section to display selected monitor for auto rotating  -->
+        <Border Grid.Row="0" Padding="12,24,12,0">
+            <StackPanel>
+                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Selected monitor" />
+                <StackPanel
+                    Margin="12,24,12,0"
+                    Orientation="Horizontal"
+                    Spacing="12">
+                    <FontIcon
+                        VerticalAlignment="Center"
+                        FontSize="25"
+                        Glyph="&#xE7F4;" />
+                    <TextBlock
+                        x:Name="MonitorTitleText"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource SubtitleTextBlockStyle}"
+                        TextTrimming="CharacterEllipsis" />
+                </StackPanel>
+                <StackPanel Margin="12,24,12,0" Spacing="6">
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <TextBlock Text="Internal display number:" />
+                        <TextBlock x:Name="DisplayNumberText" FontWeight="Bold" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <TextBlock Text="GPU:" />
+                        <TextBlock x:Name="GpuNameText" FontWeight="Bold" />
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <!--  Section to view list of active monitors and select one  -->
+        <Border Grid.Row="1" Padding="12,24,12,0">
+            <Grid MaxWidth="600" HorizontalAlignment="Left">
+                <Rectangle
+                    Width="600"
+                    Height="0"
+                    Fill="Transparent" />
+                <controls:Expander
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Stretch"
+                    Header="Choose monitor"
+                    IsExpanded="False">
+                    <StackPanel Spacing="12">
+                        <ListView
+                            x:Name="MonitorsListView"
+                            ItemTemplate="{StaticResource MonitorTemplate}"
+                            SelectionChanged="MonitorsListView_SelectionChanged"
+                            SelectionMode="Single" />
+                        <Border>
+                            <StackPanel
+                                HorizontalAlignment="Left"
+                                Orientation="Horizontal"
+                                Spacing="12">
+                                <Button
+                                    x:Name="RefreshButton"
+                                    MinWidth="120"
+                                    Click="RefreshButton_Click"
+                                    Content="Refresh" />
+                                <Button
+                                    x:Name="SelectButton"
+                                    MinWidth="120"
+                                    Click="SelectButton_Click"
+                                    Content="Select"
+                                    IsEnabled="False" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </controls:Expander>
+            </Grid>
+        </Border>
+        <!--  Section to display saved presets  -->
+        <Border Grid.Row="2" Padding="12,24,12,0">
+            <StackPanel>
+                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Layout for multiple monitors" />
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="3" Padding="12,24,12,0">
+            <Grid
+                Grid.Row="3"
+                MaxWidth="600"
+                HorizontalAlignment="Left">
+                <Rectangle
+                    Width="600"
+                    Height="0"
+                    Fill="Transparent" />
+                <controls:Expander
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Stretch"
+                    Header="Saved layouts"
+                    IsExpanded="False">
+                    <StackPanel Spacing="12">
+                        <ListView
+                            x:Name="LayoutListView"
+                            HorizontalAlignment="Stretch"
+                            ItemTemplate="{StaticResource PresetTemplate}"
+                            SelectionMode="Single" />
+                        <Border>
+                            <StackPanel
+                                HorizontalAlignment="Left"
+                                Orientation="Horizontal"
+                                Spacing="12">
+                                <Button
+                                    x:Name="AddButton"
+                                    MinWidth="120"
+                                    Click="AddButton_Click"
+                                    Content="Specify new layout" />
+                                <Button
+                                    x:Name="DeleteButton"
+                                    MinWidth="120"
+                                    Click="DeleteButton_Click"
+                                    Content="Delete layout"
+                                    IsEnabled="False" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </controls:Expander>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

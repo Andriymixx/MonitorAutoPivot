@@ -1,0 +1,45 @@
+# Prerequisites
+*.d
+.vs/
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+/ConsoleApplication1/x64/Debug
+/x64/
+/packages
+/WinUIApplication/x64/Debug
+/WinUIApplication/Generated Files
+/WinUIApplication/x64/Release
+/bin/x64/Debug
+/obj/x64/Debug
+/x64/Release/WinUIApplication/WinUIApplication.pdb
+/x64/Release/WinUIApplication/WinUIApplication.winmd
+/x64/Release/WinUIApplication/resources.pri
+/ConsoleApplication1/x64/Release

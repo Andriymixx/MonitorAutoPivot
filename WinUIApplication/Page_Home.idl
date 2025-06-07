@@ -1,0 +1,8 @@
+﻿namespace WinUIApplication
+{
+    [default_interface]
+    runtimeclass Page_Home : Microsoft.UI.Xaml.Controls.Page
+    {
+        Page_Home();
+    }
+}

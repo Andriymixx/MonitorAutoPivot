@@ -1,0 +1,117 @@
+﻿<Page
+    x:Class="WinUIApplication.Page_Connection"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Microsoft.UI.Xaml.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:WinUIApplication"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <!--  template for displaying list of COM-ports  -->
+        <DataTemplate x:Key="ComPortTemplate" x:DataType="local:Viewm_ComPort">
+            <TextBlock Text="{x:Bind DisplayName}" />
+        </DataTemplate>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <!--  Section to display state of connection  -->
+        <Border Grid.Row="0" Padding="12,24,12,0">
+            <StackPanel>
+                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Connect to Arduino" />
+                <StackPanel
+                    Margin="12,24,0,0"
+                    Orientation="Horizontal"
+                    Spacing="6">
+                    <FontIcon
+                        VerticalAlignment="Center"
+                        FontSize="25"
+                        Glyph="&#xECF0;" />
+                    <TextBlock x:Name="ComPortTitleText" VerticalAlignment="Center" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <!--  Section to manage connection  -->
+        <Border Grid.Row="1" Padding="12,24,12,0">
+            <Grid MaxWidth="600" HorizontalAlignment="Left">
+                <Rectangle
+                    Width="600"
+                    Height="0"
+                    Fill="Transparent" />
+                <controls:Expander
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Stretch"
+                    Header="Open COM-port"
+                    IsExpanded="False">
+                    <StackPanel Spacing="12">
+                        <ListView
+                            x:Name="ComPortListView"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch"
+                            ItemTemplate="{StaticResource ComPortTemplate}"
+                            SelectionMode="Single" />
+                        <Border>
+                            <StackPanel
+                                HorizontalAlignment="Left"
+                                Orientation="Horizontal"
+                                Spacing="12">
+                                <Button
+                                    x:Name="RefreshButton"
+                                    MinWidth="120"
+                                    Click="RefreshButton_Click"
+                                    Content="Refresh" />
+                                <Button
+                                    x:Name="ConnectButton"
+                                    MinWidth="120"
+                                    Click="ConnectButton_Click"
+                                    Content="Connect"
+                                    IsEnabled="False" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </controls:Expander>
+            </Grid>
+        </Border>
+        <!--  Section to navigate to remap acc axis  -->
+        <Border Grid.Row="2" Padding="12,24,12,0">
+            <StackPanel>
+                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Remap Accelerometer axes" />
+                <Border Padding="12,24,12,0">
+                    <StackPanel>
+                        <Button
+                            x:Name="RemapButton"
+                            MinWidth="120"
+                            Click="RemapButton_Click"
+                            Content="Remap" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Border>
+        <!--  Section of auto rotation function  -->
+        <Border Grid.Row="3" Padding="12,24,12,0">
+            <StackPanel>
+                <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Auto rotation" />
+                <Border Padding="12,24,12,0">
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <FontIcon
+                            VerticalAlignment="Center"
+                            FontSize="25"
+                            Glyph="&#xE8B4;" />
+                        <ToggleSwitch
+                            x:Name="RotationToggleSwitch"
+                            OffContent="Off"
+                            OnContent="On"
+                            Toggled="RotationToggleSwitch_Toggled" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

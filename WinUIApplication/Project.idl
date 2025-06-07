@@ -1,0 +1,65 @@
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+namespace WinUIApplication
+{
+    /* The following code is scenario/feature-specific IDL.
+    Samples authors should modify these runtime classes as appropriate. */
+
+
+     /* The following code is template-specific IDL.
+     These runtime classes are the same across all C++/WinRT WinUI samples. */
+
+    runtimeclass MainPage : Microsoft.UI.Xaml.Controls.Page
+    {
+        MainPage();
+        static MainPage Current();
+        void NotifyUser(String strMessage, Microsoft.UI.Xaml.Controls.InfoBarSeverity severity);
+        void NavigateToPage(Windows.UI.Xaml.Interop.TypeName pageType);
+        void EnableSaveButton();
+    }
+
+    // To use Scenario in a winrt::Windows::Foundation::Collections::IVector<Scenario>, Scenario should be a WinRT type
+    struct Scenario
+    {
+        String Title;
+        String ClassName;
+        String IconGlyph;
+    };
+
+    [default_interface]
+        runtimeclass MainWindow : Microsoft.UI.Xaml.Window
+    {
+        MainWindow();
+    }
+
+        [default_interface]
+        runtimeclass SettingsPage : Microsoft.UI.Xaml.Controls.Page
+    {
+        SettingsPage();
+    }
+        runtimeclass Viewm_Preset
+    {
+        Viewm_Preset();
+        static Viewm_Preset Create(String key, String displayName);
+
+        String Key;
+        String DisplayName;
+    }
+        runtimeclass Viewm_ComPort
+    {
+        Viewm_ComPort();
+        static Viewm_ComPort Create(String name);
+
+        String DisplayName;
+    }
+        runtimeclass Viewm_MonitorInfo
+    {
+        Viewm_MonitorInfo();
+        static Viewm_MonitorInfo Create(Int32 index, String deviceName, String displayNum, String gpuName);
+        Int32 Index;
+        String DeviceName;
+        String DisplayNum;
+        String GpuName;
+    }
+}
