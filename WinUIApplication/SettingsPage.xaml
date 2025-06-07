@@ -72,8 +72,8 @@
                         Glyph="&#xE71B;" />
                     <HyperlinkButton
                         VerticalAlignment="Center"
-                        Content="Monitor Auto Pivot"
-                        NavigateUri="http://www.microsoft.com" />
+                        Content="MonitorAutoPivot"
+                        NavigateUri="https://github.com/Andriymixx/MonitorAutoPivot" />
                 </StackPanel>
             </Grid>
         </ScrollViewer>
