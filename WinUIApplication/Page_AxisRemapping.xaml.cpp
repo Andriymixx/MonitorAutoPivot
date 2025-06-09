@@ -4,7 +4,6 @@
 #include "Page_AxisRemapping.g.cpp"
 #endif
 #include <sstream>
-#include <regex>
 #include <util.h>
 
 bool hasNewAxisRemap = false;

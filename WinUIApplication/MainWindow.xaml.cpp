@@ -6,8 +6,6 @@
 #include "microsoft.ui.xaml.window.h" 
 #include "SampleConfiguration.h"
 #endif
-#include <CommCtrl.h>
-#include <Windows.h>
 #include <App.xaml.h>
 #include <g_flags.h>
 

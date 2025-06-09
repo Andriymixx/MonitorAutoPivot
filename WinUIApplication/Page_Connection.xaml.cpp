@@ -3,12 +3,9 @@
 #if __has_include("Page_Connection.g.cpp")
 #include "Page_Connection.g.cpp"
 #endif
-#include <config_util.h>
 #include <util.h>
 #include <MainPage.xaml.h>
-#include <winrt/Microsoft.UI.Xaml.h>
 #include <SerialUtil.h>
-#include <wintoastlib.h>
 #include <toast_utils.h>
 
 namespace winrt
@@ -59,6 +56,11 @@ namespace winrt::WinUIApplication::implementation
 			// Check if connected
 			if (hSerial == NULL || hSerial == INVALID_HANDLE_VALUE) {
 				rootPage.NotifyUser(L"COM-port is not open", InfoBarSeverity::Error);
+				toggle.IsOn(false); // toggle switch off
+				return;
+			}
+			else if (!isArduinoReady) {
+				rootPage.NotifyUser(L"Arduino is not ready yet", InfoBarSeverity::Error);
 				toggle.IsOn(false); // toggle switch off
 				return;
 			}
@@ -138,13 +140,15 @@ namespace winrt::WinUIApplication::implementation
 
 	winrt::Windows::Foundation::IAsyncAction Page_Connection::ConnectAsync()
 	{
+		isArduinoReady = false;
 		hSerial = openSerialPort(ConfigUtil::selectedPort);
 		if (hSerial != INVALID_HANDLE_VALUE)
 		{
+
 			rootPage.NotifyUser(L"Waiting Arduino...", InfoBarSeverity::Informational);
 			// Waiting for Arduino to receive "READY" command in Async mode to continue 
-			bool ready = co_await SerialUtil::WaitForArduinoReadyAsync(10000);
-			if (ready)
+			isArduinoReady = co_await SerialUtil::WaitForArduinoReadyAsync(10000);
+			if (isArduinoReady)
 			{
 				SendAutoRemapConfig(ConfigUtil::g_remapConfig);
 				rootPage.NotifyUser(L"Arduino is ready", InfoBarSeverity::Success);

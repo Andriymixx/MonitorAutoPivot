@@ -1,20 +1,8 @@
 ﻿// util.cpp
 
 #include "util.h"
-#include <iostream>
-#include <Windows.h>
-#include <vector>
-#include <string>
 #include "monitor_manager.h"
-#include <thread>
-#include <conio.h>
 #include <sstream>
-#include <mutex>
-#include "config_util.h"
-#include "g_flags.h"
-#include <functional>
-#include <cwctype>
-#include <wintoastlib.h>
 #include <toast_utils.h>
 using namespace WinToastLib;
 using namespace MonitorManager;

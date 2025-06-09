@@ -5,7 +5,6 @@
 #endif
 #include <SampleConfiguration.h>
 #include <g_flags.h>
-#include <MainPage.xaml.h>
 namespace winrt
 {
     using namespace Microsoft::UI::Xaml;

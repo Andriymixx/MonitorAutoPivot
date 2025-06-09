@@ -5,15 +5,8 @@
 #endif
 
 #include "gui.h"
-#include <thread>
-#include <chrono>
-#include <map>
 #include <g_flags.h>
-#include <util.h>
-#include "Viewm_Preset.h"
-#include "Monitor_Manager.h"
 #include "MainPage.xaml.h"
-#include "MainWindow.xaml.h"
 
 namespace winrt
 {

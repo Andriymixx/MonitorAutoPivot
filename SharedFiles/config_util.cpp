@@ -3,11 +3,7 @@
 #include "monitor_manager.h"
 #include "g_flags.h"
 #include <fstream>
-#include <sstream>
-#include <filesystem>
 #include <shlobj.h>
-#include <Windows.h>
-#include <iostream>
 #pragma comment(lib, "Shell32.lib")
 using json = nlohmann::json;
 namespace MonitorManager {

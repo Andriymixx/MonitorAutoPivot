@@ -1,11 +1,7 @@
 ﻿
 #include "monitor_manager.h"
-#include <iostream>
-#include <vector>
-#include <algorithm>
 #include "toast_utils.h"
 #include "g_flags.h"
-#include <sstream>
 using namespace WinToastLib;
 namespace MonitorManager {
 	std::vector<MonitorInfo> monitors;
@@ -27,9 +23,13 @@ void startMonitorWatcher() {
 				MonitorManager::currentMonitorConfigKey = key;
 				MonitorManager::monitors = listMonitors();
 				// Check if selected monitor is active
-				bool isNowConnected = std::any_of(currentMonitors.begin(), currentMonitors.end(), [](const ActiveMonitors& m) {
-					return m.monitorPathFromTarget == MonitorManager::selectedMonitor.monitorPathFromTarget;
-					});
+				bool isNowConnected = false;
+				for (const auto& m : currentMonitors) {
+					if (m.monitorPathFromTarget == MonitorManager::selectedMonitor.monitorPathFromTarget) {
+						isNowConnected = true;
+						break;
+					}
+				}
 				if (isNowConnected) {
 					setOrientation(MonitorManager::selectedMonitor, MonitorManager::currentOrientation);
 				}
@@ -53,7 +53,7 @@ void startMonitorWatcher() {
 				}
 			}
 			lastKey = key;
-			std::this_thread::sleep_for(std::chrono::seconds(5));
+			std::this_thread::sleep_for(std::chrono::seconds(2));
 		}
 		}).detach();
 }

@@ -1,7 +1,5 @@
 #pragma once
-#include <winrt/Windows.Foundation.h>
 #include <winrt/Windows.Storage.Streams.h>
-#include <windows.h>
 
 namespace SerialUtil
 {

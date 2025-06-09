@@ -23,7 +23,8 @@ int axisSignZ = 1;
 int currentOrientation = -1;
 int previousOrientation = -1;
 
-// cos(65°) = 0.42, to not update orientation when monitor's pitch is over that value
+// 0.42, to not update orientation when monitor's pitch is over that value
+// approximately can go up to 65° from perpendicularly postitoned to user monitor
 float orientationThreshold = 0.42;
 // Deadzone to not update orientation when device in state betwen two orientations
 float deadZoneRatio = 0.1;

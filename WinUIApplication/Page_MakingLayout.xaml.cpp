@@ -3,15 +3,9 @@
 #if __has_include("Page_MakingLayout.g.cpp")
 #include "Page_MakingLayout.g.cpp"
 #endif
-#include "g_flags.h"
-#include <thread>
-#include <atomic>
 #include "util.h"
 #include <sstream>
-#include "MainWindow.xaml.h"
-#include "MainPage.xaml.h"
 #include <monitor_manager.h>
-#include <windows.h>
 namespace winrt
 {
 	using namespace Microsoft::UI::Xaml;

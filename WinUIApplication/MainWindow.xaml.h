@@ -1,13 +1,12 @@
 ﻿#pragma once
 #include "MainWindow.g.h"
 #include "pch.h"
-#include <Shellapi.h>
 #include <CommCtrl.h>
 #define WM_TRAYICON (WM_USER + 1)
 #define ID_TRAY_EXIT 1001
 #define ID_TRAY_RESTORE 1002
-#pragma comment(lib, "ComCtl32.lib") // потрібна для SetWindowSubclass
-#pragma comment(lib, "Shell32.lib")  // для Shell_NotifyIcon
+#pragma comment(lib, "ComCtl32.lib")
+
 #include "MainPage.xaml.h"
 namespace winrt::WinUIApplication::implementation
 {

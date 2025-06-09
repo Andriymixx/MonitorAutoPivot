@@ -1,8 +1,4 @@
-﻿
-#include "gui.h"
-#include <Windows.h>
-#include <thread>
-#include <string>
+﻿#include "gui.h"
 #pragma comment(lib, "gdi32.lib")
 const wchar_t* WINDOW_DATA_KEY = L"MonitorInfoKey";
 

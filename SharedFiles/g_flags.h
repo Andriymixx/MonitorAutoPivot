@@ -1,10 +1,6 @@
 ﻿#ifndef G_FLAGS_H
 #define G_FLAGS_H
-#include <vector>
-#include <string>
-#include <Windows.h>
 #include <thread>
-#include <atomic>
 #include <functional>
 // Structure of Accelerometer Axis config, 
 // so Accelerometer can be placed in any comfortable position behind monitor
@@ -29,9 +25,11 @@ std::vector<std::wstring> ListAvailableComPorts();
 std::string GetConfigPathInDocuments();
 void ManageLayoutPresetsMenu();
 void StopDataReceiving();
-void SerialDataReaderThread(HANDLE hSerial, std::function<void(const std::string&)> onDataLine, std::atomic<bool>& runFlag);
+void SerialDataReaderThread( std::function<void(const std::string&)> onDataLine, std::atomic<bool>& runFlag);
 void StartDataReceiving();
 
+// Flag to know if Arduino is ready
+extern std::atomic<bool> isArduinoReady;
 // Flag to know if there is data receiving from Arduino
 extern std::atomic<bool> dataReceivingActive;
 

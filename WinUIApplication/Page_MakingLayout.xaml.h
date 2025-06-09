@@ -1,6 +1,5 @@
 ﻿#pragma once
 #include "Page_MakingLayout.g.h"
-#include <thread>
 
 namespace winrt::WinUIApplication::implementation
 {

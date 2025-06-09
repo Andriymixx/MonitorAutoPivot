@@ -2,16 +2,11 @@
 
 #include "App.xaml.h"
 #include "MainWindow.xaml.h"
-#include <g_flags.h>
 #include <util.h>
 #include <monitor_manager.h>
 #include <SerialUtil.h>
-#include <MainPage.xaml.h>
 
-#include <wintoastlib.h>
 #include <toast_utils.h>
-#include <windows.h>
-#include <shellapi.h>
 // Define mutex for single running app
 #define APP_MUTEX_NAME L"UniqueMonitorAutoPivotMutex"
 HANDLE g_mutex = nullptr;
@@ -21,6 +16,7 @@ HANDLE hSerial = NULL;
 bool wasConnected = false;
 std::atomic<bool> stopMonitorWatcher = false;
 bool startMinimized = false;
+std::atomic<bool> isArduinoReady = false;
 
 namespace winrt
 {
@@ -104,13 +100,14 @@ namespace winrt::WinUIApplication::implementation
 		// Loading config
 		if (LoadConfigJson())
 		{
+			isArduinoReady = false;
 			hSerial = openSerialPort(ConfigUtil::selectedPort);
 			if (hSerial != INVALID_HANDLE_VALUE)
 			{
 				rootPage.NotifyUser(L"Waiting Arduino...", InfoBarSeverity::Informational);
 				// Waiting for Arduino to receive "READY" command in Async mode to continue 
-				bool ready = co_await SerialUtil::WaitForArduinoReadyAsync(10000);
-				if (ready)
+				isArduinoReady = co_await SerialUtil::WaitForArduinoReadyAsync(10000);
+				if (isArduinoReady)
 				{
 					SendAutoRemapConfig(ConfigUtil::g_remapConfig);
 					rootPage.NotifyUser(L"Arduino is ready", InfoBarSeverity::Success);
