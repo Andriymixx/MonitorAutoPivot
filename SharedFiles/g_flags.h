@@ -8,7 +8,7 @@ struct RemapConfig {
 	int mapX, mapY, mapZ; // For remaping axis
 	int signX, signY, signZ; // also for its sign
 	// Default values
-	RemapConfig() : mapX(1), mapY(2), mapZ(3), signX(1), signY(1), signZ(1) {}
+	RemapConfig() : mapX(0), mapY(1), mapZ(2), signX(1), signY(1), signZ(1) {}
 };
 
 namespace ConfigUtil {
