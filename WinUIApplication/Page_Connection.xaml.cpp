@@ -7,6 +7,7 @@
 #include <MainPage.xaml.h>
 #include <SerialUtil.h>
 #include <toast_utils.h>
+#include <monitor_manager.h>
 
 namespace winrt
 {
@@ -61,6 +62,11 @@ namespace winrt::WinUIApplication::implementation
 			}
 			else if (!isArduinoReady) {
 				rootPage.NotifyUser(L"Arduino is not ready yet", InfoBarSeverity::Error);
+				toggle.IsOn(false); // toggle switch off
+				return;
+			}
+			else if (MonitorManager::selectedMonitor.displayNum.empty()) {
+				rootPage.NotifyUser(L"Monitor is not selected", InfoBarSeverity::Error);
 				toggle.IsOn(false); // toggle switch off
 				return;
 			}
