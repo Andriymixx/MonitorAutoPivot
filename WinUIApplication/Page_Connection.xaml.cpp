@@ -125,7 +125,7 @@ namespace winrt::WinUIApplication::implementation
 	void Page_Connection::ConnectButton_Click(IInspectable const&, RoutedEventArgs const&)
 	{
 		if (c_selectedIndex >= 0 && c_selectedIndex < static_cast<int>(m_comPorts.Size())) {
-			auto selected = m_comPorts.GetAt(c_selectedIndex).DisplayName();
+			ConfigUtil::selectedPort = m_comPorts.GetAt(c_selectedIndex).DisplayName();
 			if (dataReceivingActive) {
 				StopDataReceiving();
 			}
