@@ -32,7 +32,9 @@ Application supports Windows 10 and Windows 11. All tests were performed on Wind
 
 ## Usage
 
-- Connect the **MPU-6050 sensor** to your **Arduino Nano V3** using folowwing scheme
+- Connect the **MPU-6050 sensor** to your **Arduino Nano V3** using folowing scheme:
+ <img src="https://github.com/user-attachments/assets/802dac2d-6241-489a-85dc-ffa97205df34" alt="Connection scheme" style="width:350px; height:auto;">
+
 - Connect Arduino to PC and Flash the firmware to the device using [Arduino IDE](https://docs.arduino.cc/software/ide-v2/tutorials/getting-started/ide-v2-downloading-and-installing/)
 - Mount the device on your monitor.
 - Install the Windows application from downloads.
