@@ -14,27 +14,35 @@
             Text="Welcome" />
         <TextBlock
             FontSize="18"
-            Text="To start using application"
+            Text="To start using application:"
             TextAlignment="Left" />
         <TextBlock
             FontSize="18"
-            Text="Chose monitor to be auto rotated in (Manage monitors) tab"
+            Text="- Choose a monitor to be auto rotated in (Manage monitors) tab."
             TextAlignment="Left" />
         <TextBlock
             FontSize="18"
-            Text="Connect to Arduino in (Connection) tab"
+            Text="- Connect to device by selecting its COM-port in (Connection) tab."
             TextAlignment="Left" />
         <TextBlock
             FontSize="18"
-            Text="Remap Axis"
+            Text="- Remap accelerometer Axes in (Connection) tab."
             TextAlignment="Left" />
         <TextBlock
             FontSize="18"
-            Text="Start auto rotation"
+            Text="- Save settings."
             TextAlignment="Left" />
         <TextBlock
             FontSize="18"
-            Text="Done"
+            Text="- Start auto rotation in (Connection) tab."
+            TextAlignment="Left" />
+        <TextBlock
+            FontSize="18"
+            Text="- (Optionally) Specify layout for correct arrangement of monitors"
+            TextAlignment="Left" />
+        <TextBlock
+            FontSize="18"
+            Text="if using multiple monitors in (Manage monitors) tab."
             TextAlignment="Left" />
     </StackPanel>
 </Page>
