@@ -40,5 +40,5 @@
 	<PropertyGroup Label="PlatformToolset">
 		<PlatformToolset>$(DefaultPlatformToolset)</PlatformToolset>
 	</PropertyGroup>
-	
+
 </Project>

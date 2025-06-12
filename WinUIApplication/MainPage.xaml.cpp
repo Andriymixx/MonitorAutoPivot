@@ -132,7 +132,7 @@ namespace winrt::WinUIApplication::implementation
 				if (ConfigUtil::g_startWithWindows)
 				{
 					// Set reg key to enable autostartup
-					RegSetValueExW(hKey, valueName, 0, REG_SZ, 
+					RegSetValueExW(hKey, valueName, 0, REG_SZ,
 						reinterpret_cast<const BYTE*>(command.c_str()),
 						static_cast<DWORD>((command.size() + 1) * sizeof(wchar_t)));
 				}
@@ -151,7 +151,7 @@ namespace winrt::WinUIApplication::implementation
 		// Disable save button
 		SaveConfigButton().IsEnabled(false);
 		hasUnsavedChanges = false;
-		
+
 	}
 
 	void MainPage::NavView_Navigate(hstring navItemTag, NavigationTransitionInfo const&)
@@ -191,7 +191,7 @@ namespace winrt::WinUIApplication::implementation
 	void MainPage::ContentFrame_Navigated(IInspectable const&, NavigationEventArgs const& e)
 	{
 		// If on one of AxisRemapping or MakingLayout pages 
-		bool isBlockingPage = 
+		bool isBlockingPage =
 			e.SourcePageType().Name == winrt::xaml_typename<Page_AxisRemapping>().Name ||
 			e.SourcePageType().Name == winrt::xaml_typename<Page_MakingLayout>().Name;
 		// Then blocking navigation back action

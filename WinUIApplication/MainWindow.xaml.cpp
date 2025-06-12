@@ -31,7 +31,7 @@ namespace winrt::WinUIApplication::implementation
 		HWND hwnd = GetWindowHandle();
 		LoadIcon(hwnd, L"Assets/IconLogo.ico");
 		SetWindowSize(hwnd, 1050, 800);
-		
+
 		PlacementCenterWindowInMonitorWin32(hwnd);
 
 		InitializeTray();
@@ -75,9 +75,9 @@ namespace winrt::WinUIApplication::implementation
 		case WM_GETMINMAXINFO:
 		{
 			LPMINMAXINFO lpMMI = reinterpret_cast<LPMINMAXINFO>(lParam);
-			lpMMI->ptMinTrackSize.x = 800; 
-			lpMMI->ptMinTrackSize.y = 600; 
-			return 0; 
+			lpMMI->ptMinTrackSize.x = 800;
+			lpMMI->ptMinTrackSize.y = 600;
+			return 0;
 		}
 		case WM_TRAYICON:
 			if (lParam == WM_RBUTTONUP)

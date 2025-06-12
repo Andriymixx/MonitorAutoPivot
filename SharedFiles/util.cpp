@@ -1,6 +1,4 @@
-﻿// util.cpp
-
-#include "util.h"
+﻿#include "util.h"
 #include "monitor_manager.h"
 #include <sstream>
 #include <toast_utils.h>

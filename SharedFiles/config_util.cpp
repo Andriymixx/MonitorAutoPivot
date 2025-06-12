@@ -1,5 +1,4 @@
-﻿
-#include <nlohmann/json.hpp>
+﻿#include <nlohmann/json.hpp>
 #include "monitor_manager.h"
 #include "g_flags.h"
 #include <fstream>
@@ -59,7 +58,7 @@ bool SaveConfigJson() {
 	j["MONITOR"]["deviceName"] = ws2s(MonitorManager::selectedMonitor.deviceName);
 	j["MONITOR"]["gpuName"] = ws2s(MonitorManager::selectedMonitor.gpuName);
 
-	
+
 	json presetByMonSet = json::object();
 	for (const auto& [configKey, ltPreset] : MonitorManager::PresetByMonitorSet) {
 		json ltPresetJson = json::object();

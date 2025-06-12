@@ -5,7 +5,7 @@
 // Structure of Accelerometer Axis config, 
 // so Accelerometer can be placed in any comfortable position behind monitor
 struct RemapConfig {
-	int mapX, mapY, mapZ; // For remaping axis
+	int mapX, mapY, mapZ; // For remapping axis
 	int signX, signY, signZ; // also for its sign
 	// Default values
 	RemapConfig() : mapX(0), mapY(1), mapZ(2), signX(1), signY(1), signZ(1) {}
@@ -25,7 +25,7 @@ std::vector<std::wstring> ListAvailableComPorts();
 std::string GetConfigPathInDocuments();
 void ManageLayoutPresetsMenu();
 void StopDataReceiving();
-void SerialDataReaderThread( std::function<void(const std::string&)> onDataLine, std::atomic<bool>& runFlag);
+void SerialDataReaderThread(std::function<void(const std::string&)> onDataLine, std::atomic<bool>& runFlag);
 void StartDataReceiving();
 
 // Flag to know if Arduino is ready
@@ -43,6 +43,6 @@ extern std::atomic<bool> presetMakingActive;
 extern bool wasConnected;
 
 // Flag for monitorWatcher thread
-extern std::atomic<bool> stopMonitorWatcher; 
+extern std::atomic<bool> stopMonitorWatcher;
 extern HANDLE hSerial;
 #endif // G_FLAGS_H
